@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img id="myImage" src="image/Slide-01.jpeg">
+<button onclick="moveDow()">Dow</button>
+<button onclick="moveUp()">Up</button>
+<button onclick="moveRight()">Right</button>
+<button onclick="moveLeft()">Left</button>
+<script>
+    let image;
+    image = document.getElementById('myImage');
+    function init() {
+        image = document.getElementById('myImage');
+        image.style.position = 'relative';
+        image.style.top = '0px'
+        image.style.left = '0px'
+    }
+    //
+    // window.onload = init; //Không thể onload window.onload vs body.onload cùng lúc
+    init();
+    // document.body.onload = docReady;
+    function moveDow() {
+        // image = document.getElementById('myImage');
+        image.style.top = parseInt(image.style.top) + 10 + 'px';
+    }
+
+    function moveUp() {
+        // image = document.getElementById('myImage');
+        image.style.top = parseInt(image.style.top) - 10 + 'px';
+    }
+
+    function moveRight() {
+        // image = document.getElementById('myImage');
+        image.style.left = parseInt(image.style.left) + 10 + 'px';
+    }
+
+    function moveLeft() {
+        // image = document.getElementById('myImage');
+        image.style.left = parseInt(image.style.left) - 10 + 'px';
+    }
+
+    function moveSelection(evt){
+        console.log('goi ham select: EVT ---> ', evt)
+        console.log('goi ham select', evt.keyCode)
+        switch (evt.keyCode) {
+            case 37:
+                moveLeft();
+                break;
+            case 39:
+                moveRight();
+                break;
+            case 38:
+                moveUp();
+                break;
+            case 40:
+                moveDow();
+                break;
+        }
+    }
+    function docReady() {
+        console.log('goi docReady')
+        window.addEventListener('keydown', moveSelection);
+        console.log('sau an phim')
+    }
+    document.body.onload=docReady
+
+</script>
+</body>
+</html>
